@@ -1,3 +1,3 @@
 package edu.temple.imagerecyclerview
 
-data class ImageObject(val resourceId: Int, val description: String)
+data class ImageObject(val image: Int, val name: String)

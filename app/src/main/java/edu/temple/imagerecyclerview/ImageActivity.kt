@@ -3,27 +3,41 @@ package edu.temple.imagerecyclerview
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.media.Image
+import android.widget.GridLayout
+import android.widget.ImageView
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.GridLayoutManager
+
 
 class ImageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        var heroList: Array<ImageObject> = arrayOf(ImageObject(R.drawable.blackpanther, "Black Panther"),
+            ImageObject(R.drawable.blackwidow, "Black Widow"),
+            ImageObject(R.drawable.captainamerica, "Captain America"),
+            ImageObject(R.drawable.doctorstrange, "Doctor Strange"),
+            ImageObject(R.drawable.hulk, "Hulk"),
+            ImageObject(R.drawable.ironman, "Iron Man"),
+            ImageObject(R.drawable.shangchi, "Shang Chi"),
+            ImageObject(R.drawable.spiderman, "Spider Man"),
+            ImageObject(R.drawable.thor, "Thor"),
+            ImageObject(R.drawable.vision, "Vision"),
+            ImageObject(R.drawable.wanda, "Wanda"))
+
+
+        val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = GridLayoutManager(applicationContext, 3)
+        recyclerView.adapter = ImageAdapter(this, heroList) { image: ImageObject ->
+            imageClicked(
+                image
+            )
+        }
+
     }
 
-
-    fun getHeros(): Array<ImageObject> {
-        return arrayOf(ImageObject(R.drawable.BlackPanther, "Black Panther"),
-            ImageObject(R.drawable.BlackWidow, "Black Widow"),
-            ImageObject(R.drawable.CaptainAmerica, "Captain America"),
-            ImageObject(R.drawable.DoctorStrange, "Doctor Strange"),
-            ImageObject(R.drawable.Hulk, "Hulk"),
-            ImageObject(R.drawable.IronMan, "Iron Man"),
-            ImageObject(R.drawable.ShangChi, "Shang Chi"),
-            ImageObject(R.drawable.SpiderMan, "Spider Man"),
-            ImageObject(R.drawable.Thor, "Thor"),
-            ImageObject(R.drawable.Vision, "Vision"),
-            ImageObject(R.drawable.Wanda, "Wanda"))
-
+    private fun imageClicked(image: ImageObject) {
 
     }
 }
