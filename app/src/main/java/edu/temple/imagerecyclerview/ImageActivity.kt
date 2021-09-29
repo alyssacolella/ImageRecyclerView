@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.media.Image
 import android.widget.GridLayout
 import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.GridLayoutManager
 
@@ -34,10 +36,18 @@ class ImageActivity : AppCompatActivity() {
                 image
             )
         }
-
     }
 
     private fun imageClicked(image: ImageObject) {
+
+        val text: TextView = R.id.heroName as TextView
+        text.text = image.name
+
+        val img: ImageView = R.id.heroPicture as ImageView
+        img.setImageResource(image.image)
+
+
+        Toast.makeText(this, "Clicked: ${image.name}", Toast.LENGTH_LONG).show()
 
     }
 }
